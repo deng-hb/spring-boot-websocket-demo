@@ -6,8 +6,18 @@
 </head>
 <body>
     see console
-    <script>
 
+    <input id="in" type="text" placeholder="请输入" />
+    <button onclick="send()">send</button>
+    <div id="msg"></div>
+    <script>
+    var el = function(id) {
+        return document.getElementById(id);
+    }
+    var send = function() {
+        var txt = el('in').value;
+        ws.send(txt);
+    }
         var ws = new WebSocket("ws://localhost:8080/mywebsocket");
 
         ws.onopen = function(e) {
@@ -15,9 +25,13 @@
             ws.send("Hello WebSocket Server!");
         };
 
+
         ws.onmessage = function(e) {
             console.log( "Received Message: " + e.data);
-            ws.close();
+            var msg = document.createElement('p');
+            console.log(msg)
+            msg.innerText = e.data;
+            el('msg').appendChild(msg);
         };
 
         ws.onclose = function(e) {

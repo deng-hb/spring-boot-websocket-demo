@@ -1,4 +1,4 @@
-package com.denghb.demo.handler;
+package com.denghb.demo.server.handler;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,7 +31,7 @@ public class MyWebSocketHandler implements WebSocketHandler {
 
         log.debug("\nPayload:{}", message.getPayload());
 
-        session.sendMessage(new TextMessage("Hello WebSocket Client!"));
+        session.sendMessage(new TextMessage(session.getId() + ":" + message.getPayload()));
     }
 
     @Override

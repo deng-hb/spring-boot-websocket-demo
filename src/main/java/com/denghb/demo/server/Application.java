@@ -1,4 +1,4 @@
-package com.denghb.demo;
+package com.denghb.demo.server;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
